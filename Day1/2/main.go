@@ -50,6 +50,7 @@ func (p *point) move (direction string, checkDuplicate bool) bool {
 		break
 	}
 
+	//walk the direction 1 block at a time, and check for duplicates
 	for i := 0; i < distance; i++ {
 		p.x += x
 		p.y += y
@@ -61,6 +62,7 @@ func (p *point) move (direction string, checkDuplicate bool) bool {
 	return false
 }
 
+//store the current location in a lookup
 func (p *point) store () {
 	if len(p.visited) == 0 {
 		p.visited = make(map[string]bool)
@@ -68,6 +70,7 @@ func (p *point) store () {
 	p.visited[strconv.Itoa(p.x) + ", " + strconv.Itoa(p.y)] = true
 }
 
+//check if we've been here before
 func (p *point) hasVisited () bool {
 	return p.visited[strconv.Itoa(p.x) + ", " + strconv.Itoa(p.y)]
 }
